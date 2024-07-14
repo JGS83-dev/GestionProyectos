@@ -8,5 +8,10 @@ namespace GestionProyectos.Models
         {
 
         }
+
+        public DbSet<RolesProyecto> RolesProyectos { get; set; }
+        public DbSet<Asignaciones> Asignaciones { get; set; }
+        public DbSet<Proyectos> Proyectos { get; set; }
+        public DbSet<Empleados> Empleados { get; set; }
     }
 }
