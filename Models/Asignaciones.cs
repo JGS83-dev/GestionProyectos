@@ -9,14 +9,16 @@ namespace GestionProyectos.Models
         public DateTime FechaAsignacion { get; set; }
 
         //Proyecto al cual se realiza la asignacion
-        [Required]
         [ForeignKey("Proyectos")]
+        [Display(Name = "Proyecto")]
+        [Required(ErrorMessage = "El proyecto es requerido")]
         public int? ProyectoId { get; set; }
 
         public Proyectos Proyectos { get; set; }
 
         //Empleado Asignado
-        [Required]
+        [Display(Name = "Empleado asignado")]
+        [Required(ErrorMessage = "El empleado es requerido")]
         [ForeignKey("Empleados")]
         public int? EmpleadoId { get; set; }
 
@@ -24,7 +26,8 @@ namespace GestionProyectos.Models
 
         //Rol Asignado
 
-        [Required]
+        [Display(Name = "Rol del empleado en el proyecto")]
+        [Required(ErrorMessage = "El Rol del empleado en el proyecto es requerido")]
         [ForeignKey("RolesProyecto")]
         public int? RolProyectoId { get; set; }
 

@@ -8,15 +8,21 @@ namespace GestionProyectos.Models
         public int Id { get; set; }
 
         [StringLength(250)]
-        [Required]
+        [Display(Name = "Nombre del empleado")]
+        [Required(ErrorMessage = "El nombre del empleado es requerido")]
         public string NombreEmpleado { get; set; }
 
         [StringLength(250)]
-        [Required]
+        [Display(Name = "Apellido del empleado")]
+        [Required(ErrorMessage = "El apellido del empleado es requerido")]
         public string ApellidoEmpleado { get; set; }
+
+        [Display(Name = "Fecha de contratación")]
+        [Required(ErrorMessage = "La fecha de contratación es requerida")]
         public DateTime FechaContratacion { get; set; }
 
-        [Required]
+        [Display(Name = "Puesto del empleado")]
+        [Required(ErrorMessage = "El puesto del empleado es requerido")]
         [ForeignKey("PuestoEmpleado")]
         public int? PuestoId { get; set; }
 
