@@ -9,6 +9,14 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+<form asp-asp-controller="Asignaciones" asp-action="Index" method="get">
+    <p>
+        Proyecto: <input type="text" name="textoABuscar" class="form-control" />
+        <input type="submit" value="Filtrar" class="btn btn-info" />
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>

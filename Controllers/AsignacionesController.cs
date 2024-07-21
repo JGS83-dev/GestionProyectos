@@ -19,10 +19,28 @@ namespace GestionProyectos.Controllers
         }
 
         // GET: Asignaciones
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string textoABuscar)
         {
-            var gestionProyectosContextDb = _context.Asignaciones.Include(a => a.Empleados).Include(a => a.Proyectos).Include(a => a.RolesProyecto);
-            return View(await gestionProyectosContextDb.ToListAsync());
+            if (_context.Asignaciones == null)
+            {
+                return Problem("No se ha inicializado el contexto");
+            }
+
+            var asignaciones = from a in _context.Asignaciones.Include(a => a.Empleados).Include(a => a.Proyectos).Include(a => a.RolesProyecto) select a;
+
+
+            if (!String.IsNullOrEmpty(textoABuscar))
+            {
+                asignaciones = asignaciones.Where(p => p.Proyectos.NombreProyecto.Contains(textoABuscar));
+            }
+
+            return View(await asignaciones.ToListAsync());
+        }
+
+        [HttpPost]
+        public string Index(string textoABuscar, bool notUsed)
+        {
+            return "From [HttpPost]Index: filter on " + textoABuscar;
         }
 
         // GET: Asignaciones/Details/5
